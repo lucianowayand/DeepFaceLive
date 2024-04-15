@@ -3090,7 +3090,7 @@ class PickleFS:
 
 
 # from xlib import torch as lib_torch
-# from collections import Iterable
+# from collections.abc import Iterable
 # a = lib_torch.Devices.get_all()
 
 # import zipfile

@@ -100,8 +100,10 @@ class QFaceDetector(QBackendPanel):
                         info_str = f'{face_id}: '
 
                         if fsi.face_urect is not None:
-                            l,t,r,b = fsi.face_urect.as_ltrb_bbox(frame_image_w_h).astype(np.int)
-                            info_str += f'[{l},{t},{r},{b}]'
+                            bbox = fsi.face_urect.as_ltrb_bbox(frame_image_w_h)
+                            if bbox is not None and hasattr(bbox, '__iter__'):
+                                l,t,r,b = map(int, bbox)
+                                info_str += f'[{l},{t},{r},{b}]'
 
                         info.append(info_str)
 
